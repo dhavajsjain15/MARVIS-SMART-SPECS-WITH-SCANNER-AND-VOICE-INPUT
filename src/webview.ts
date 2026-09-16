@@ -1,12 +1,17 @@
 import { AuthenticatedRequest, AppServer } from '@mentra/sdk';
 import express from 'express';
 import path from 'path';
+import ejs from 'ejs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export function setupExpressRoutes(server: AppServer): void {
   const app = server.getExpressApp();
 
   app.set('view engine', 'ejs');
-  app.engine('ejs', require('ejs').__express);
+  app.engine('ejs', ejs.__express);
 
   app.set('views', [
     path.join(__dirname, 'views'),

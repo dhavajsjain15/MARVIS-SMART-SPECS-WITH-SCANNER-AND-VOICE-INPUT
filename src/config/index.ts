@@ -1,6 +1,7 @@
 /**
  * Centralized configuration management with validation
  */
+import 'dotenv/config'
 
 export interface Config {
   packageName: string
